@@ -1,0 +1,68 @@
+﻿@using PlainMVC.Controllers
+@model PlainMVC.Models.DigipostSearchModel 
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+@using (Html.BeginForm("Search", "Digipost", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Search string</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.SearchQuery, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SearchQuery, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Submit" />
+        </div>
+    </div>
+}
+
+
+@if (Model != null && Model.SearchDetails != null)
+{
+    <table class="table">
+        
+        @foreach (var v in Model.SearchDetails)
+        {
+            <thead>
+                <tr>
+                    <td>@Html.LabelFor(m => v.FirstName, new {@class = "col-md-2 control-label"})</td>
+                    <td>@Html.LabelFor(m => v.LastName, new { @class = "col-md-2 control-label" })</td>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    @Html.LabelForModel(v.FirstName)
+                </td>
+                <td>
+                    @Html.LabelForModel(v.LastName)
+
+                </td>
+                <td>
+                    @using (Html.BeginForm("Send", "Digipost"))
+                    {
+                    @Html.AntiForgeryToken()
+                    <div>
+                        @Html.Hidden("digipostAddress", v.DigipostAddress)
+                        <input type="submit" class="btn btn-default" value="Send" title="Send" />
+                    </div>
+                    }
+                </td>
+            </tr>
+            </tbody>
+        }
+    </table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

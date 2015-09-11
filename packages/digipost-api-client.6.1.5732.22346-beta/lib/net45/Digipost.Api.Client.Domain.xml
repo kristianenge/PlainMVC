@@ -1,0 +1,564 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Digipost.Api.Client.Domain</name>
+    </assembly>
+    <members>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessageDeliveryResult.DeliveryMethod">
+            <summary>
+            The type of postage delivery method.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessageDeliveryResult.Status">
+            <summary>
+            The current status of the message in Digipost.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessageDeliveryResult.DeliveryTime">
+            <summary>
+            Optional. The time when the document will be made visible to the user. 
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessageDeliveryResult.PrimaryDocument">
+            <summary>
+            The primary document of the delivery. This is the document that will be shown first in the 
+            recipient's inbox when opening the letter.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessageDeliveryResult.Attachments">
+            <summary>
+            Optional. Attachments can be added to the message, and can be of same types as the primary
+            document.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IForeignAddress.CountryIdentifierValue">
+            <summary>
+                The value of the contryIdentifier.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IForeignAddress.CountryIdentifier">
+            <summary>
+                Choose how to will identify the country.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.Print.ForeignAddress.#ctor(Digipost.Api.Client.Domain.Enums.CountryIdentifier,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Foreign address for use when sending a letter abroad.
+            </summary>
+            <param name="countryIdentifier">Type of identifier used for identifying a country.</param>
+            <param name="countryIdentifierValue">The value for country.</param>
+            <param name="addressLine1">First address line.</param>
+            <param name="addressLine2">Second address line.</param>
+            <param name="addressLine3">Third address line.</param>
+            <param name="addressline4">Fourth address line.</param>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrint.Name">
+            <summary>
+                Sets the name of the recipient.(Also used for the return address)
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrint.Address">
+            <summary>
+                Sets the address of the recipient.(Also used for the return address) Choose between ForeignAddress or
+                NorwegianAddress.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrintDetails.PrintRecipient">
+            <summary>
+                The recipient of the physical mail.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrintDetails.PrintReturnRecipient">
+            <summary>
+                The return address of the physical mail. (if nondeliverable AND the nondeliverable-handling is set to
+                ReturnToSender)
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrintDetails.PostType">
+            <summary>
+                Defines how fast you want the item delivered. Note: additional charges may apply
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrintDetails.PrintColors">
+            <summary>
+                Defines if you want the documents printed in black / white or color (Note: additional charges may apply).
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.Print.IPrintDetails.NondeliverableHandling">
+            <summary>
+                Determines the exception handling that will occur when the letter can not be delivered.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.Print.NorwegianAddress.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Norwegian address for use when sending a letter within Norway.
+            </summary>
+            <param name="postalCode">Postal code for the address provided.</param>
+            <param name="city">City in which the address resides.</param>
+            <param name="addressLine1">First address line.</param>
+            <param name="addressLine2">Second address line. Optional.</param>
+            <param name="addressLine3">Third address line. Optional. </param>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.Search.SearchDetails">
+            <summary>
+            When requesting person information via the SearchDetails API, this class is the result.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.Guid">
+            <summary>
+                Unique identification of document. Is set automatically using System.Guid.NewGuid(), and is
+                necessary to change.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.Subject">
+            <summary>
+                The subject of the message
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.FileType">
+            <summary>
+                The file type of the document, indicated by file-type.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.SmsNotification">
+            <summary>
+                Optional SMS notification to Recipient.
+                Additional charges apply.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.AuthenticationLevel">
+            <summary>
+                The level of authentication for the document.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.SensitivityLevel">
+            <summary>
+                Sets the sensitivity level for the document.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IDocument.ContentBytes">
+            <summary>
+                The document encoded as a byte array.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Document.#ctor(System.String,System.String,System.Byte[],Digipost.Api.Client.Domain.Enums.AuthenticationLevel,Digipost.Api.Client.Domain.Enums.SensitivityLevel,Digipost.Api.Client.Domain.SendMessage.ISmsNotification)">
+            <param name="subject">The subject of the document.</param>
+            <param name="fileType">The mime type of the file. e.g pdf,txt..</param>
+            <param name="contentBytes">The content of file in byteArray.</param>
+            <param name="authenticationLevel">Required authentication level of the document. Default password.</param>
+            <param name="sensitivityLevel">Sensitivity level of the document. Default normal.</param>
+            <param name="smsNotification">Sets SMS notification setting. Default null.</param>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Document.#ctor(System.String,System.String,System.IO.Stream,Digipost.Api.Client.Domain.Enums.AuthenticationLevel,Digipost.Api.Client.Domain.Enums.SensitivityLevel,Digipost.Api.Client.Domain.SendMessage.ISmsNotification)">
+            <param name="subject">The subject of the document.</param>
+            <param name="fileType">The type of the file. e.g pdf,txt..</param>
+            <param name="documentStream">Stream of the file.</param>
+            <param name="authenticationLevel">Required authentication level of the document. Default password.</param>
+            <param name="sensitivityLevel">Sensitivity level of the document. Default normal.</param>
+            <param name="smsNotification">Sets SMS notification setting. Default null.</param>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Document.#ctor(System.String,System.String,System.String,Digipost.Api.Client.Domain.Enums.AuthenticationLevel,Digipost.Api.Client.Domain.Enums.SensitivityLevel,Digipost.Api.Client.Domain.SendMessage.ISmsNotification)">
+            <param name="subject">The subject of the document.</param>
+            <param name="fileType">The mime type of the file. e.g pdf,txt..</param>
+            <param name="path">The path to the file. e.g c:\docs\file01.txt</param>
+            <param name="authenticationLevel">Required authentication level of the document. Default password.</param>
+            <param name="sensitivityLevel">Sensitivity level of the document. Default normal.</param>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IInvoice.Kid">
+            <summary>
+            Customer identification number. 2 to 25 digits with no spaces or dots. Mandatory by default.  
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IInvoice.Amount">
+            <summary>
+            The amount of the invoice.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IInvoice.Account">
+            <summary>
+            Receiving account. 11 digits with no spaces or dots.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IInvoice.Duedate">
+            <summary>
+            When the invoice is due.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.Recipient">
+            <summary>
+            The recipient receiving the message. 
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.DeliveryTime">
+            <summary>
+            Optional. The time when the document will be made visible to the user. 
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.DeliveryTimeSpecified">
+            <summary>
+            True if a delivery time is specified for the message. Otherwise false.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.PrimaryDocument">
+            <summary>
+            The primary document of the delivery. This is the document that will be shown first in the 
+            recipient's inbox when opening the letter.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.Attachments">
+            <summary>
+            Optional. Attachments can be added to the message, and can be of same types as the primary
+            document.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IMessage.SenderId">
+            <summary>
+            The id of the sender, created by Digipost.  If you are delivering a 
+            message on behalf of an organization, and permission to do so is set, this is the parameter to set.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.FullName">
+            <summary>
+                Full name of person, first name first.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.AddressLine1">
+            <summary>
+                Primary address
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.AddressLine2">
+            <summary>
+                Secondary addressline
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.PostalCode">
+            <summary>
+                Postal code
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.City">
+            <summary>
+                City
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.BirthDate">
+            <summary>
+                Birth date
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.PhoneNumber">
+            <summary>
+                Phone number
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.IRecipientByNameAndAddress.Email">
+            <summary>
+                E-mail address
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.ISmsNotification.NotifyAtTimes">
+            <summary>
+                List of Listedtime, where each element is the date and time an SMS will be sent out
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.SendMessage.ISmsNotification.NotifyAfterHours">
+            <summary>
+                List of integers, where each element is hours after an SMS will be sent out
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Message.#ctor(Digipost.Api.Client.Domain.SendMessage.IRecipient,Digipost.Api.Client.Domain.SendMessage.IDocument,System.String)">
+            <summary>
+            A message to be delivered to a Recipient. 
+            </summary>
+            <param name="recipient">The recipient recieving the message.</param>
+            <param name="primaryDocument">The primary document sent to the recipient.</param>
+            <param name="senderId">The id of the sender, created by Digipost.  If you are delivering a 
+            message on behalf of an organization, and permission to do so is set, this is the parameter to set. </param>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.Search.SearchDetailsResult">
+            <summary>
+            A collection of Person Details as a result of a request via the Person Details API. 
+            </summary>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.Enums.AuthenticationLevel">
+            <summary>
+                The authentication level you require that the recipient have to open the letter.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.AuthenticationLevel.Password">
+            <summary>
+                Default. Social security number and password is required to open the letter.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.AuthenticationLevel.TwoFactor">
+            <summary>
+                Two factor authentication will be required to open the letter.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.CountryIdentifier.Country">
+            <summary>
+                Country name in Norwegian or English.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.CountryIdentifier.Countrycode">
+            <summary>
+                Country code according to the ISO 3166-1 alpha-2 standard.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.DeliveryMethod.Print">
+            <summary>
+                Delivered through fysical print and postal service.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.DeliveryMethod.Digipost">
+            <summary>
+                Delivered digitally in Digipost
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationResultType.DigipostAddress">
+            <summary>
+            The subjects digipost-address
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationResultType.InvalidReason">
+            <summary>
+            Enum of invalidreason
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationResultType.Personalias">
+            <summary>
+            The subjects personalias.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationResultType.UnidentifiedReason">
+            <summary>
+            Enum of unidentified reason.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.InvalidReason.InvalidPersonalIdentificationNumber">
+            <summary>
+            Invalid Social Security Number (SSN). Check the number and try again.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.InvalidReason.InvalidOrganisationNumber">
+            <summary>
+            Invalid organisation number. Check the number and try again.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.InvalidReason.Unknown">
+            <summary>
+            Subject is unknown.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.MessageStatus.NotComplete">
+            <summary>
+                The message resource is not complete. Consult the provided links to see what options are availiable.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.MessageStatus.Complete">
+            <summary>
+                The message resource is complete, and can be sent. Note that you can also tweak the message before sending it.
+                Consult the provided links to see what options are availiable.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.MessageStatus.Delivered">
+            <summary>
+                The message is delivered. Consult the provided links to see what options are availiable.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.MessageStatus.DeliveredToPrint">
+            <summary>
+                The message is delivered to print. Consult the provided links to see what options are availiable.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.NondeliverableHandling.ReturnToSender">
+            <summary>
+                If mail is undeliverable the mail will be returned to the return address.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.PostType.A">
+            <summary>
+                Increased delivery priority. Note: additional charges may apply.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.PostType.B">
+            <summary>
+                Normal delivery priority.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.PrintColors.Monochrome">
+            <summary>
+                Prints the document in black/white.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.PrintColors.Colors">
+            <summary>
+                Prints the document in colors. Note: additional charges may apply.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.UnidentifiedReason.MultipleMatches">
+            <summary>
+            When more than one possible subject. Try narrow down the search with more information about the subject.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.UnidentifiedReason.NotFound">
+            <summary>
+            Subject not found based on search criteria. 
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationChoiceType.DigipostAddress">
+            <summary>
+                Digipost address. Issued by Digipost. eg. firstname.surname#id01. Unique per person.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationChoiceType.NameAndAddress">
+            <summary>
+                Name and Address of recipient. look at NameAndAddress.cs for more info.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationChoiceType.OrganisationNumber">
+            <summary>
+                Organisation number. A nine digit registration number issued by the goverment. Unique per organisation.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.IdentificationChoiceType.PersonalidentificationNumber">
+            <summary>
+                Social security number. A twelve digit number issued by the goverment. Unique per person.
+            </summary>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.DataTransferObjects.IdentificationDataTransferObject">
+            <summary>
+            Used to identify users in Digipost, by Digipost address, name and address, 
+            Organization Number or Social Security Number.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.IdentificationDataTransferObject.#ctor(Digipost.Api.Client.Domain.Enums.IdentificationChoiceType,System.String)">
+            <summary>
+            Identify if recipient exists in Digipost by Digipost address, Organization 
+            Number or Social Security Number.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.IdentificationDataTransferObject.#ctor(Digipost.Api.Client.Domain.Enums.IdentificationChoiceType,Digipost.Api.Client.Domain.SendMessage.RecipientByNameAndAddress)">
+            <summary>
+            Identify if recipient exists in Digipost by name and address.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.IdentificationDataTransferObject.#ctor(Digipost.Api.Client.Domain.SendMessage.RecipientByNameAndAddress)">
+            <summary>
+            Identify if recipient exists in Digipost by name and address.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.DataTransferObjects.InvoiceDataTransferObject.Kid">
+            <summary>
+            Customer identification number. 2 to 25 digits with no spaces or dots. Mandatory by default.  
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.DataTransferObjects.InvoiceDataTransferObject.Amount">
+            <summary>
+            The amount of the invoice.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.DataTransferObjects.InvoiceDataTransferObject.Account">
+            <summary>
+            Receiving account. 11 digits with no spaces or dots.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.DataTransferObjects.InvoiceDataTransferObject.Duedate">
+            <summary>
+            When the invoice is due.
+            </summary>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.DataTransferObjects.MessageDeliveryResultDataTransferObject">
+            <summary>
+            The response object that will be returned for every OK http request(200-299)
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.ForeignAddressDataTransferObject.#ctor(Digipost.Api.Client.Domain.Enums.CountryIdentifier,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Foreign address for use when sending a letter abroad.
+            </summary>
+            <param name="countryIdentifier">Type of identifier used for identifying a country.</param>
+            <param name="countryIdentifierValue">The value for country.</param>
+            <param name="addressLine1">First address line.</param>
+            <param name="addressLine2">Second address line.</param>
+            <param name="addressLine3">Third address line.</param>
+            <param name="addressLine4">Fourth address line.</param>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.NorwegianAddressDataTransferObject.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Norwegian address for use when sending a letter within Norway.
+            </summary>
+            <param name="postalCode">Postal code for the address provided.</param>
+            <param name="city">City in which the address resides.</param>
+            <param name="addressline1">First address line.</param>
+            <param name="addressline2">Second address line.</param>
+            <param name="addressline3">Third address line.</param>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.PrintDetailsDataTransferObject.#ctor(Digipost.Api.Client.Domain.DataTransferObjects.PrintRecipientDataTransferObject,Digipost.Api.Client.Domain.DataTransferObjects.PrintReturnRecipientDataTransferObject,Digipost.Api.Client.Domain.Enums.PostType,Digipost.Api.Client.Domain.Enums.PrintColors,Digipost.Api.Client.Domain.Enums.NondeliverableHandling)">
+            <summary>
+                Constructor to send physical letter.
+            </summary>
+        </member>
+        <member name="P:Digipost.Api.Client.Domain.DataTransferObjects.PrintDetailsDataTransferObject.NondeliverableHandling">
+            <summary>
+                Determines the exception handling that will occur when the letter can not be delivered.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.PrintReturnRecipientDataTransferObject.#ctor(System.String,Digipost.Api.Client.Domain.DataTransferObjects.ForeignAddressDataTransferObject)">
+            <summary>
+                Constructor for foreign(not Norwegian) return address
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.DataTransferObjects.PrintReturnRecipientDataTransferObject.#ctor(System.String,Digipost.Api.Client.Domain.DataTransferObjects.NorwegianAddressDataTransferObject)">
+            <summary>
+                Constructor for Norwegian return address
+            </summary>
+        </member>
+        <member name="T:Digipost.Api.Client.Domain.Enums.SensitivityLevel">
+            <summary>
+                Defines if the message is sensitive or not.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.SensitivityLevel.Normal">
+            <summary>
+                Default. Non sensitive message. Metadata about the message, like the sender and subject,
+                will be revealed in user notifications (eg. email and SMS), and can also be seen when logged in at a
+                security level below the one specified for the message.
+            </summary>
+        </member>
+        <member name="F:Digipost.Api.Client.Domain.Enums.SensitivityLevel.Sensitive">
+            <summary>
+                Sensitive message. Metadata about the message, like the sender and subject, will be hidden
+                until logged in at the appropriate security level specified for the message.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Recipient.#ctor(Digipost.Api.Client.Domain.SendMessage.RecipientByNameAndAddress,Digipost.Api.Client.Domain.Print.PrintDetails)">
+            <summary>
+                Preferred digital delivery with fallback to physical delivery.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Recipient.#ctor(Digipost.Api.Client.Domain.Enums.IdentificationChoiceType,System.String,Digipost.Api.Client.Domain.Print.PrintDetails)">
+            <summary>
+                Preferred digital delivery with fallback to physical delivery.
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.Recipient.#ctor(Digipost.Api.Client.Domain.Print.PrintDetails)">
+            <summary>
+                Preferred physical delivery (not Digital).
+            </summary>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.SmsNotification.#ctor(System.DateTime[])">
+            <summary>
+            Sms notification for a message
+            </summary>
+            <param name="sendingTime">The date and time an SMS will be sent out</param>
+        </member>
+        <member name="M:Digipost.Api.Client.Domain.SendMessage.SmsNotification.#ctor(System.Int32[])">
+            <summary>
+            Sms notification for a message
+            </summary>
+            <param name="afterHours">List of hours after delivered where the sms notification will be delivered</param>
+        </member>
+    </members>
+</doc>
